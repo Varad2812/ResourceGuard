@@ -1,0 +1,8 @@
+{
+  "name": "resourceguard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "ResourceGuard: C-based Banker's Algorithm deadlock avoidance simulator",
+  "engines": { "node": ">=18" }
+}

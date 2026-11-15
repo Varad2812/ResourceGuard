@@ -1,0 +1,112 @@
+{
+  "id": "textbook",
+  "name": "Textbook 5\u00d73",
+  "tag": "Classic",
+  "description": "The classic Silberschatz example: 5 processes, resources A/B/C with 10, 5 and 7 instances. Safe, with sequence P1 \u2192 P3 \u2192 P4 \u2192 P0 \u2192 P2.",
+  "state": {
+    "processes": 5,
+    "resources": 3,
+    "allocation": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ]
+    ],
+    "max": [
+      [
+        7,
+        5,
+        3
+      ],
+      [
+        3,
+        2,
+        2
+      ],
+      [
+        9,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        4,
+        3,
+        3
+      ]
+    ],
+    "available": [
+      3,
+      3,
+      2
+    ]
+  },
+  "suggested": [
+    {
+      "pid": 1,
+      "request": [
+        1,
+        0,
+        2
+      ],
+      "expect": "GRANTED",
+      "note": "Test 2: granted, sequence P1\u2192P3\u2192P4\u2192P0\u2192P2"
+    },
+    {
+      "pid": 4,
+      "request": [
+        3,
+        3,
+        0
+      ],
+      "expect": "DENIED",
+      "note": "Test 3 (after test 2): Request > Available"
+    },
+    {
+      "pid": 0,
+      "request": [
+        0,
+        2,
+        0
+      ],
+      "expect": "ROLLED_BACK",
+      "note": "Test 4 (after test 2): available but unsafe"
+    },
+    {
+      "pid": 1,
+      "request": [
+        0,
+        3,
+        0
+      ],
+      "expect": "DENIED",
+      "note": "Test 5 (initial state): Request > Need"
+    }
+  ],
+  "order": 0
+}

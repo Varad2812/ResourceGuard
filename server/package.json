@@ -1,0 +1,16 @@
+{
+  "name": "resourceguard-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Express API that spawns the ResourceGuard C binary",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node smoke.js"
+  },
+  "dependencies": {
+    "cors": "2.8.5",
+    "express": "4.21.2"
+  }
+}

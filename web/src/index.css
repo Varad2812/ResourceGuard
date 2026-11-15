@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 251 246 238;        /* #FBF6EE cream */
+  --card: 255 253 248;      /* #FFFDF8 */
+  --sunk: 245 237 224;
+  --ink: 43 29 20;          /* #2B1D14 espresso */
+  --muted: 118 98 83;
+  --line: 234 223 203;      /* #EADFCB */
+  --primary: 194 86 47;     /* #C2562F terracotta */
+  --amber: 229 154 47;      /* #E59A2F */
+  --amber-ink: 150 92 14;
+  --safe: 94 140 97;        /* #5E8C61 sage */
+  --unsafe: 178 58 51;      /* #B23A33 brick */
+  --term-bg: 33 24 19;
+  --term-ink: 236 224 206;
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: 28 20 16;           /* #1C1410 */
+  --card: 38 27 21;         /* #261B15 */
+  --sunk: 48 35 28;
+  --ink: 243 233 220;
+  --muted: 178 158 140;
+  --line: 66 50 40;
+  --primary: 224 122 82;
+  --amber: 236 172 78;
+  --amber-ink: 240 190 110;
+  --safe: 132 180 134;
+  --unsafe: 226 102 92;
+  --term-bg: 20 14 11;
+  --term-ink: 236 224 206;
+  color-scheme: dark;
+}
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-bg font-sans text-ink;
+    background-image: radial-gradient(1200px 500px at 85% -10%, rgb(var(--primary) / 0.06), transparent 60%),
+      radial-gradient(900px 400px at -10% 110%, rgb(var(--amber) / 0.06), transparent 60%);
+    background-attachment: fixed;
+  }
+  body::before {
+    /* subtle paper grain */
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.35;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.17 0 0 0 0 0.11 0 0 0 0 0.08 0 0 0 0.05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  :focus-visible {
+    outline-color: rgb(var(--primary));
+  }
+  ::selection {
+    background: rgb(var(--primary) / 0.25);
+  }
+}
+
+@layer components {
+  .card {
+    @apply relative rounded-xl border border-line bg-card shadow-card;
+  }
+  .input {
+    @apply h-9 rounded-lg border border-line bg-card px-2.5 text-sm text-ink outline-none transition placeholder:text-muted/70 focus:border-primary focus:ring-2 focus:ring-primary/15;
+  }
+  .terminal {
+    background: rgb(var(--term-bg));
+    color: rgb(var(--term-ink));
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--line)) transparent;
+  }
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+@media print {
+  body::before {
+    display: none;
+  }
+}

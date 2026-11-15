@@ -1,0 +1,72 @@
+{
+  "id": "circular-wait",
+  "name": "3-process circular wait",
+  "tag": "Circular wait",
+  "description": "Three single-instance resources. P0 holds R0 and wants R1; P1 holds R1 and wants R2. If P2 is handed R2 the processes form the cycle P0\u2192R1\u2192P1\u2192R2\u2192P2\u2192R0\u2192P0.",
+  "state": {
+    "processes": 3,
+    "resources": 3,
+    "allocation": [
+      [
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "max": [
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        1,
+        0,
+        1
+      ]
+    ],
+    "available": [
+      0,
+      0,
+      1
+    ]
+  },
+  "suggested": [
+    {
+      "pid": 2,
+      "request": [
+        0,
+        0,
+        1
+      ],
+      "expect": "ROLLED_BACK",
+      "note": "Grabbing R2 closes the cycle: Banker's refuses, detection shows the deadlock"
+    },
+    {
+      "pid": 1,
+      "request": [
+        0,
+        0,
+        1
+      ],
+      "expect": "GRANTED",
+      "note": "P1 can complete and break the chain"
+    }
+  ],
+  "order": 2
+}

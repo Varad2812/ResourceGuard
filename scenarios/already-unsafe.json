@@ -1,0 +1,71 @@
+{
+  "id": "already-unsafe",
+  "name": "Already unsafe",
+  "tag": "Unsafe start",
+  "description": "The textbook matrices with Available reduced to (1,1,1). P3 and P1 can finish, then P0, P2 and P4 are all stuck: the initial state is already unsafe.",
+  "state": {
+    "processes": 5,
+    "resources": 3,
+    "allocation": [
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        2
+      ],
+      [
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        2
+      ]
+    ],
+    "max": [
+      [
+        7,
+        5,
+        3
+      ],
+      [
+        3,
+        2,
+        2
+      ],
+      [
+        9,
+        0,
+        2
+      ],
+      [
+        2,
+        2,
+        2
+      ],
+      [
+        4,
+        3,
+        3
+      ]
+    ],
+    "available": [
+      1,
+      1,
+      1
+    ]
+  },
+  "suggested": [],
+  "order": 4
+}

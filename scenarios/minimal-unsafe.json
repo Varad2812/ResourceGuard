@@ -1,0 +1,55 @@
+{
+  "id": "minimal-unsafe",
+  "name": "Minimal 2-process",
+  "tag": "Unsafe request",
+  "description": "Two processes and two resource types. Safe now, but P0 asking for one more R0 leaves no safe sequence, so the Banker's Algorithm rolls it back.",
+  "state": {
+    "processes": 2,
+    "resources": 2,
+    "allocation": [
+      [
+        1,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "max": [
+      [
+        3,
+        2
+      ],
+      [
+        2,
+        2
+      ]
+    ],
+    "available": [
+      1,
+      1
+    ]
+  },
+  "suggested": [
+    {
+      "pid": 0,
+      "request": [
+        1,
+        0
+      ],
+      "expect": "ROLLED_BACK",
+      "note": "Available, but leads to an unsafe state"
+    },
+    {
+      "pid": 1,
+      "request": [
+        1,
+        1
+      ],
+      "expect": "GRANTED",
+      "note": "P1 can finish, so this is safe"
+    }
+  ],
+  "order": 1
+}
