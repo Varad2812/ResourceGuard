@@ -35,7 +35,7 @@ On Vercel there is no long-running server, so the build works like this (see `ve
 2. The dashboard is built into `web/dist` and served as static files.
 3. `api/run.js`, `api/scenarios.js` and `api/health.js` are serverless functions. They bundle the Linux `core/build/resourceguard` binary and spawn it per request through `server/engine.js`, the same code the Express server uses.
 
-To redeploy, run `vercel deploy --prod` from the project root.
+The Vercel project is connected to this GitHub repository. Every push to `main` deploys to production automatically, and other branches get preview URLs. A manual deploy still works with `vercel deploy --prod`.
 
 ### The C program on its own
 
